@@ -5,6 +5,7 @@ project (rt2d)
 # delete CMakeCache.txt from the build directory when you edit these options
 ####################################################################
 OPTION(MAKE_START "Make RT2D start application" ON)
+OPTION(MAKE_PADDLEBRICK "Make PaddleBrick application" ON)
 OPTION(MAKE_DEMO "Make RT2D demo (tests) application" ON)
 OPTION(MAKE_CANVAS_DEMO "Make RT2D Canvas demo (tests) application" ON)
 OPTION(MAKE_FLOCKING "Make flocking application" ON)
@@ -160,6 +161,27 @@ IF(MAKE_START)
 	# Copy assets to the build directory
 	file(
 		COPY start/assets
+		DESTINATION ${CMAKE_BINARY_DIR}
+	)
+ENDIF()
+
+####################################################################
+# PaddleBrick                                                           #
+####################################################################
+IF(MAKE_PADDLEBRICK)
+	add_executable(paddlebrick
+		PaddleBrick/main.cpp
+		PaddleBrick/myentity.cpp
+		PaddleBrick/myentity.h
+		PaddleBrick/myscene.cpp
+		PaddleBrick/myscene.h
+	)
+	target_link_libraries(paddlebrick
+		${ALL_GRAPHICS_LIBS}
+	)
+	# Copy assets to the build directory
+	file(
+		COPY PaddleBrick/assets
 		DESTINATION ${CMAKE_BINARY_DIR}
 	)
 ENDIF()
