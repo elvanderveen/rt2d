@@ -173,8 +173,16 @@ IF(MAKE_PADDLEBRICK)
 		PaddleBrick/main.cpp
 		PaddleBrick/myentity.cpp
 		PaddleBrick/myentity.h
-		PaddleBrick/myscene.cpp
 		PaddleBrick/myscene.h
+		PaddleBrick/myscene.cpp
+		PaddleBrick/paddle.cpp
+		PaddleBrick/paddle.h
+		PaddleBrick/ball.cpp
+		PaddleBrick/ball.h
+		PaddleBrick/brick.cpp
+		PaddleBrick/brick.h
+		
+		
 	)
 	target_link_libraries(paddlebrick
 		${ALL_GRAPHICS_LIBS}

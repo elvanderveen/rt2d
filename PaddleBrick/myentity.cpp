@@ -12,6 +12,7 @@ MyEntity::MyEntity() : Entity()
 	this->sprite()->color = RED;
 }
 
+
 MyEntity::~MyEntity()
 {
 

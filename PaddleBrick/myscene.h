@@ -9,9 +9,11 @@
 #ifndef MYSCENE_H
 #define MYSCENE_H
 
+
 #include <rt2d/scene.h>
 
 #include "myentity.h"
+#include "paddle.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
@@ -29,7 +31,9 @@ public:
 
 private:
 	/// @brief the rotating square in the middle of the screen
-	MyEntity* myentity;
+	MyEntity * myentity1;
+	MyEntity* myentity2;
+	Paddle* paddle1;
 	/// @brief a Timer to rotate the color every n seconds
 	Timer t;
 };
