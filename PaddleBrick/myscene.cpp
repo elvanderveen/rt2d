@@ -21,11 +21,14 @@ MyScene::MyScene() : Scene()
 	myentity2 = new MyEntity();
 	myentity2->position = Point2(SWIDTH / 4, SHEIGHT / 2);
 
+	paddle1 = new Paddle();
+	paddle1->position = Point2(SWIDTH / 2, SHEIGHT / 1.5);
 	// create the scene 'tree'
 	// add myentity to this Scene as a child.
 	this->addChild(myentity1);
 	this->addChild(myentity2);
-	paddle1 = new Paddle();
+	this->addChild(paddle1);
+	
 }
 
 
@@ -34,10 +37,13 @@ MyScene::~MyScene()
 	// deconstruct and delete the Tree
 	this->removeChild(myentity1);
 	this->removeChild(myentity2);
+	this->removeChild(paddle1);
+	
 
 	// delete myentity from the heap (there was a 'new' in the constructor)
 	delete myentity1;
 	delete myentity2;
+	delete paddle1;
 	
 }
 
