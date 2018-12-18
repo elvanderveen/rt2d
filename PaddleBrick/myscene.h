@@ -14,6 +14,7 @@
 
 #include "myentity.h"
 #include "paddle.h"
+#include "brick.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
@@ -34,8 +35,10 @@ private:
 	MyEntity * myentity1;
 	MyEntity* myentity2;
 	Paddle* paddle1;
+	Brick* brickGrid;
 	/// @brief a Timer to rotate the color every n seconds
 	Timer t;
+	Timer t2;
 };
 
 #endif /* SCENE00_H */

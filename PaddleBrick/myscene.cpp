@@ -12,6 +12,7 @@ MyScene::MyScene() : Scene()
 {
 	// start the timer.
 	t.start();
+	t2.start();
 
 	// create a single instance of MyEntity in the middle of the screen.
 	// the Sprite is added in Constructor of MyEntity.
@@ -23,11 +24,16 @@ MyScene::MyScene() : Scene()
 
 	paddle1 = new Paddle();
 	paddle1->position = Point2(SWIDTH / 2, SHEIGHT / 1.5);
+
+	brickGrid = new Brick();
+	brickGrid->position = Point2(SWIDTH / 2, SHEIGHT / 3);
+
 	// create the scene 'tree'
 	// add myentity to this Scene as a child.
 	this->addChild(myentity1);
 	this->addChild(myentity2);
 	this->addChild(paddle1);
+	this->addChild(brickGrid);
 	
 }
 
@@ -38,12 +44,13 @@ MyScene::~MyScene()
 	this->removeChild(myentity1);
 	this->removeChild(myentity2);
 	this->removeChild(paddle1);
-	
+	this->removeChild(brickGrid);
 
 	// delete myentity from the heap (there was a 'new' in the constructor)
 	delete myentity1;
 	delete myentity2;
 	delete paddle1;
+	delete brickGrid;
 	
 }
 
@@ -73,6 +80,12 @@ void MyScene::update(float deltaTime)
 		RGBAColor color = myentity1->sprite()->color;
 		myentity1->sprite()->color = Color::rotate(color, 0.01f);
 		t.start();
+	}
+
+	if (t2.seconds() > 0.0333f) {
+		RGBAColor color1 = brickGrid->sprite()->color;
+		brickGrid->sprite()->color = Color::rotate(color1, 0.01f);
+		t2.start();
 	}
 		
 }
