@@ -33,12 +33,20 @@ public:
 private:
 	/// @brief the rotating square in the middle of the screen
 	MyEntity * myentity1;
-	MyEntity* myentity2;
 	Paddle* paddle1;
-	Brick* brickGrid;
+	Brick* brick1;
+	Brick* brick2;
+	Brick* brick3;
+	Brick* brick4;
+	Brick* brick5;
+	Brick* brick6;
+	Brick* brick7;
+	Brick* brick8;
+
 	/// @brief a Timer to rotate the color every n seconds
 	Timer t;
-	Timer t2;
+	
+	
 };
 
 #endif /* SCENE00_H */
