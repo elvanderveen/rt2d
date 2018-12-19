@@ -171,8 +171,6 @@ ENDIF()
 IF(MAKE_PADDLEBRICK)
 	add_executable(paddlebrick
 		PaddleBrick/main.cpp
-		PaddleBrick/myentity.cpp
-		PaddleBrick/myentity.h
 		PaddleBrick/myscene.h
 		PaddleBrick/myscene.cpp
 		PaddleBrick/paddle.cpp

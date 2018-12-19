@@ -16,8 +16,6 @@ MyScene::MyScene() : Scene()
 
 	// create a single instance of MyEntity in the middle of the screen.
 	// the Sprite is added in Constructor of MyEntity.
-	myentity1 = new MyEntity();
-	myentity1->position = Point2(SWIDTH / 2, SHEIGHT / 1.75);
 
 	paddle1 = new Paddle();
 	paddle1->position = Point2(SWIDTH / 2, SHEIGHT / 1.25);
@@ -52,7 +50,6 @@ MyScene::MyScene() : Scene()
 
 	// create the scene 'tree'
 	// add myentity to this Scene as a child.
-	this->addChild(myentity1);
 	this->addChild(paddle1);
 	this->addChild(brick1);
 	this->addChild(brick2);
@@ -70,7 +67,6 @@ MyScene::MyScene() : Scene()
 MyScene::~MyScene()
 {
 	// deconstruct and delete the Tree
-	this->removeChild(myentity1);
 	this->removeChild(paddle1);
 	this->removeChild(brick1);
 	this->removeChild(brick2);
@@ -83,7 +79,6 @@ MyScene::~MyScene()
 	
 
 	// delete myentity from the heap (there was a 'new' in the constructor)
-	delete myentity1;
 	delete paddle1;
 	delete brick1;
 	delete brick2;
@@ -109,21 +104,21 @@ void MyScene::update(float deltaTime)
 	// ###############################################################
 	// Spacebar scales myentity
 	// ###############################################################
-	if (input()->getKeyDown(KeyCode::Space)) {
+	/*if (input()->getKeyDown(KeyCode::Space)) {
 		myentity1->scale = Point(0.5f, 0.5f);
 	}
 	if (input()->getKeyUp(KeyCode::Space)) {
 		myentity1->scale = Point(1.0f, 1.0f);
-	}
+	}*/
 
 	// ###############################################################
 	// Rotate color
 	// ###############################################################
-	if (t.seconds() > 0.0333f) {
+	/*if (t.seconds() > 0.0333f) {
 		RGBAColor color = myentity1->sprite()->color;
 		myentity1->sprite()->color = Color::rotate(color, 0.01f);
 		t.start();
-	}
+	}*/
 
 
 		

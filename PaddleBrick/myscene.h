@@ -12,7 +12,7 @@
 
 #include <rt2d/scene.h>
 
-#include "myentity.h"
+
 #include "paddle.h"
 #include "brick.h"
 
@@ -32,7 +32,6 @@ public:
 
 private:
 	/// @brief the rotating square in the middle of the screen
-	MyEntity * myentity1;
 	Paddle* paddle1;
 	Brick* brick1;
 	Brick* brick2;
