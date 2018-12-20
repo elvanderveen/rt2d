@@ -20,6 +20,11 @@ MyScene::MyScene() : Scene()
 	paddle1 = new Paddle();
 	paddle1->position = Point2(SWIDTH / 2, SHEIGHT / 1.25);
 
+	// Ball
+
+	ball = new Ball();
+	ball->position = Point2(SWIDTH / 2, SHEIGHT / 1.75);
+
 	// BrickGrid
 
 	brick1 = new Brick();
@@ -47,10 +52,10 @@ MyScene::MyScene() : Scene()
 	brick8->position = Point2(SWIDTH / 1.25, SHEIGHT /3.5 );
 
 
-
 	// create the scene 'tree'
 	// add myentity to this Scene as a child.
 	this->addChild(paddle1);
+	this->addChild(ball);
 	this->addChild(brick1);
 	this->addChild(brick2);
 	this->addChild(brick3);
@@ -68,6 +73,7 @@ MyScene::~MyScene()
 {
 	// deconstruct and delete the Tree
 	this->removeChild(paddle1);
+	this->removeChild(ball);
 	this->removeChild(brick1);
 	this->removeChild(brick2);
 	this->removeChild(brick3);
@@ -80,6 +86,7 @@ MyScene::~MyScene()
 
 	// delete myentity from the heap (there was a 'new' in the constructor)
 	delete paddle1;
+	delete ball;
 	delete brick1;
 	delete brick2;
 	delete brick3;

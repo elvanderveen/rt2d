@@ -15,6 +15,7 @@
 
 #include "paddle.h"
 #include "brick.h"
+#include "ball.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
@@ -33,6 +34,7 @@ public:
 private:
 	/// @brief the rotating square in the middle of the screen
 	Paddle* paddle1;
+	Ball* ball;
 	Brick* brick1;
 	Brick* brick2;
 	Brick* brick3;
