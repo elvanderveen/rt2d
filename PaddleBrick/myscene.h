@@ -35,19 +35,13 @@ private:
 	/// @brief the rotating square in the middle of the screen
 	Paddle* paddle1;
 	Ball* ball;
-	Brick* brick1;
-	Brick* brick2;
-	Brick* brick3;
-	Brick* brick4;
-	Brick* brick5;
-	Brick* brick6;
-	Brick* brick7;
-	Brick* brick8;
+	//Brick* brick1;
+
 
 	/// @brief a Timer to rotate the color every n seconds
 	Timer t;
 	
-	
+	std::vector<Brick*> bricks;
 };
 
 #endif /* SCENE00_H */
