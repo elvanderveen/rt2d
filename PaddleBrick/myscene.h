@@ -36,7 +36,8 @@ private:
 	Paddle* paddle1;
 	Ball* ball;
 	//Brick* brick1;
-
+	
+	void CheckCollisionPaddle();
 
 	/// @brief a Timer to rotate the color every n seconds
 	Timer t;

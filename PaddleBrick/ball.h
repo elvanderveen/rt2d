@@ -21,9 +21,15 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
 
+	bool CircleParamater(int dosomethign);
+
+	bool OnCollisionEnter(Entity* other);
+
+	Vector2 velocity;
+
 private:
 	/* add your private declarations */
-	Vector2 velocity;
+	
 };
 
 #endif

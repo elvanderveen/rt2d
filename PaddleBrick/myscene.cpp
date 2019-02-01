@@ -22,7 +22,7 @@ MyScene::MyScene() : Scene()
 
 	// Ball
 
-	ball = new Ball();
+	ball = new Ball();                                                                                                              
 	ball->position = Point2(SWIDTH / 2, SHEIGHT / 2);
 
 
@@ -86,6 +86,8 @@ void MyScene::update(float deltaTime)
 		this->stop();
 	}
 
+	CheckCollisionPaddle();
+
 	// ###############################################################
 	// Spacebar scales myentity
 	// ###############################################################
@@ -107,4 +109,11 @@ void MyScene::update(float deltaTime)
 
 
 		
+}
+
+void MyScene::CheckCollisionPaddle()
+{
+	if (ball->OnCollisionEnter(paddle1)) {
+		ball->velocity.y = -ball->velocity.y;
+	}
 }
