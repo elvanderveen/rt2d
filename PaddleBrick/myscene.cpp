@@ -46,17 +46,11 @@ MyScene::MyScene() : Scene()
 
 
 
-	
-
-
-
-
-	// create the scene 'tree'
+		// create the scene 'tree'
 	// add myentity to this Scene as a child.
 	this->addChild(paddle1);
 	this->addChild(ball);
-
-
+	
 	
 	
 }
@@ -87,6 +81,8 @@ void MyScene::update(float deltaTime)
 	}
 
 	CheckCollisionPaddle();
+	CheckCollisionBricks();
+
 
 	// ###############################################################
 	// Spacebar scales myentity
@@ -111,9 +107,29 @@ void MyScene::update(float deltaTime)
 		
 }
 
-void MyScene::CheckCollisionPaddle()
-{
+void MyScene::CheckCollisionPaddle(){
+
 	if (ball->OnCollisionEnter(paddle1)) {
 		ball->velocity.y = -ball->velocity.y;
 	}
+
+	
+
+}
+
+void MyScene::CheckCollisionBricks() {
+
+	for (int b = 0; b < bricks.size(); b++)
+	{
+		if (ball->OnCollisionEnter(bricks[b])) {
+
+		}
+	}
+	// for-loop door vector bricks
+	// Brick* brickTest = .... 1 item uit de vector
+	//ball-OnCollisionEnter(brickTest);
+	if (ball->OnCollisionEnter(bricks)) {
+		ball->velocity.y = -ball->velocity.y;
+	}
+
 }

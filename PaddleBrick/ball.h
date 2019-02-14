@@ -21,9 +21,11 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
 
-	bool CircleParamater(int dosomethign);
+	bool CircleParamater(int dosomething);
 
 	bool OnCollisionEnter(Entity* other);
+
+	/*bool OnCollisionEnter(Entity* brick);*/
 
 	Vector2 velocity;
 

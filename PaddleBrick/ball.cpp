@@ -53,14 +53,14 @@ void Ball::update(float deltaTime)
 	//float position.y = 
 	//}
 
-	///
+	
 
 	
 }
 //
 //bool circle2rectangle(const Ball& Ball, const Paddle& paddle) {
 //	float mx = std::max(Paddle.x, std::min(Ball.x, Paddle.x + Paddle.width));
-//	float my = std::max(Paddle.y, std::min(Ball.y, Paddle.y + Paddle.height));
+//	float my = std::max(Paddle.y, std::min(Ball.y, Paddle.y + Paddle.height)); 
 //	float dx = Ball.x - mx;
 //	float dy = Ball.y - my;
 //	return (dx * dx + dy * dy) < (Ball.radius * Ball.radius);
@@ -80,4 +80,5 @@ bool Ball::OnCollisionEnter(Entity * other)
 		return true;
 	}
 	return false;
+
 }
