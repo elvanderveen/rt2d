@@ -13,7 +13,6 @@ MyScene::MyScene() : Scene()
 	// start the timer.
 	t.start();
 	
-
 	// create a single instance of MyEntity in the middle of the screen.
 	// the Sprite is added in Constructor of MyEntity.
 
@@ -33,8 +32,6 @@ MyScene::MyScene() : Scene()
 	int yoffset = 50;
 	int xoffset = 230;
 
-	
-
 	for (int y=0; y < 4; y++) {
 		for (int x = 0; x < 5; x++) {
 			Brick* b = new Brick();
@@ -43,18 +40,17 @@ MyScene::MyScene() : Scene()
 			this->addChild(b);
 		}
 	}
-
-
-
+	//for each(Brick* b in bricks) {
+	//	if (ball->OnCollisionEnter(b)) {
+	//		ball->velocity.y = -ball->velocity.y;	//TestLine
+	//	}
+	
 		// create the scene 'tree'
 	// add myentity to this Scene as a child.
 	this->addChild(paddle1);
 	this->addChild(ball);
 	
-	
-	
 }
-
 
 MyScene::~MyScene()
 {
@@ -62,13 +58,10 @@ MyScene::~MyScene()
 	this->removeChild(paddle1);
 	this->removeChild(ball);
 	
-
 	// delete myentity from the heap (there was a 'new' in the constructor)
 	delete paddle1;
 	delete ball;
-	
-	
-	
+
 }
 
 void MyScene::update(float deltaTime)
@@ -82,7 +75,6 @@ void MyScene::update(float deltaTime)
 
 	CheckCollisionPaddle();
 	CheckCollisionBricks();
-
 
 	// ###############################################################
 	// Spacebar scales myentity
@@ -101,10 +93,7 @@ void MyScene::update(float deltaTime)
 		RGBAColor color = myentity1->sprite()->color;
 		myentity1->sprite()->color = Color::rotate(color, 0.01f);
 		t.start();
-	}*/
-
-
-		
+	}*/		
 }
 
 void MyScene::CheckCollisionPaddle(){
@@ -113,23 +102,31 @@ void MyScene::CheckCollisionPaddle(){
 		ball->velocity.y = -ball->velocity.y;
 	}
 
-	
-
 }
 
 void MyScene::CheckCollisionBricks() {
 
-	for (int b = 0; b < bricks.size(); b++)
-	{
-		if (ball->OnCollisionEnter(bricks[b])) {
-
-		}
+		static bool ball2brick(const Ball& ball, const Brick& brick) {
+		float mx = std::max(rect.x, std::min(circle.x, rect.x + rect.width));
+		float my = std::max(rect.y, std::min(circle.y, rect.y + rect.height));
+		float dx = circle.x - mx;
+		float dy = circle.y - my;
+		return (dx * dx + dy * dy) < (circle.radius * circle.radius);
 	}
+
+	//for (int b = 0; b < bricks.size(); b++)
+	//{
+	//	if (ball->OnCollisionEnter(bricks[b])) {
+	//		ball->velocity.y = -ball->velocity.y;	//TestLine
+	//	}
+	//	
+	//}
+
 	// for-loop door vector bricks
 	// Brick* brickTest = .... 1 item uit de vector
 	//ball-OnCollisionEnter(brickTest);
-	if (ball->OnCollisionEnter(bricks)) {
-		ball->velocity.y = -ball->velocity.y;
-	}
+	//*if (ball->OnCollisionEnter(bricks)) {
+	//	ball->velocity.y = -ball->velocity.y;
+	//}*
 
 }

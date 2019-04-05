@@ -2,7 +2,7 @@
 #ifndef MYBRICK_H
 #define MYBRICK_H
 
-
+#include <rt2d/entity.h>
 #include <rt2d/scene.h>
 
 

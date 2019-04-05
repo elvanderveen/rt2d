@@ -46,6 +46,8 @@ private:
 	Timer t;
 	
 	std::vector<Brick*> bricks;
+	
+
 };
 
 #endif /* SCENE00_H */
