@@ -5,6 +5,7 @@
 
 #include <rt2d/entity.h>
 #include <rt2d/scene.h>
+#include "brick.h"
 
 
 /// @brief The MyEntity class is the Entity implementation.
@@ -24,6 +25,7 @@ public:
 	bool CircleParamater(int dosomething);
 
 	bool OnCollisionEnter(Entity* other);
+	bool OnCollisionEnterBrick(Brick* brick);
 
 	/*bool OnCollisionEnter(Entity* brick);*/
 

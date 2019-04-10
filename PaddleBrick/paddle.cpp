@@ -21,13 +21,13 @@ void Paddle::update(float deltaTime)
 	if (this->position.x >= 64 && this->position.x <= SWIDTH - 64) {
 
 		if (this->input()->getKey(KeyCode::D)) {
-			this->position.x += 0.5;
+			this->position.x += 3.0;
 
 
 		}
 
 		if (this->input()->getKey(KeyCode::A)) {
-			this->position.x += -0.5;
+			this->position.x += -3.0;
 		}
 	}
 

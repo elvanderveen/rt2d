@@ -70,6 +70,7 @@ bool Ball::CircleParamater(int dosomething) {
 	return true;
 }
 
+
 bool Ball::OnCollisionEnter(Entity * other)
 {
 	if (this->position.x < other->position.x + other->sprite()->size.x * other->scale.x &&
@@ -80,5 +81,18 @@ bool Ball::OnCollisionEnter(Entity * other)
 		return true;
 	}
 	return false;
+
+}
+bool Ball::OnCollisionEnterBrick(Brick * brick)
+{
+	if (this->position.x < brick->position.x + brick->sprite()->size.x * brick->scale.x &&
+		this->position.x + this->sprite()->size.x > brick->position.x &&
+		this->position.y < brick->position.y + brick->sprite()->size.y * brick->scale.y &&
+		this->sprite()->size.y * this->scale.y + this->position.y > brick->position.y)
+	{
+		return true;
+	}
+	return false;
+
 
 }

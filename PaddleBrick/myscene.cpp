@@ -23,11 +23,10 @@ MyScene::MyScene() : Scene()
 
 	ball = new Ball();                                                                                                              
 	ball->position = Point2(SWIDTH / 2, SHEIGHT / 2);
-
+	
 
 	// BrickGrid
 
-	bricks = std::vector<Brick*>();
 
 	int yoffset = 50;
 	int xoffset = 230;
@@ -38,6 +37,8 @@ MyScene::MyScene() : Scene()
 			b->position.x = (x * 200) + xoffset;
 			b->position.y = (y * 75) + yoffset;
 			this->addChild(b);
+			bricks.push_back(b);
+			
 		}
 	}
 	//for each(Brick* b in bricks) {
@@ -50,6 +51,16 @@ MyScene::MyScene() : Scene()
 	this->addChild(paddle1);
 	this->addChild(ball);
 	
+}
+bool MyScene::CheckCollisionBricks(Ball* ball, Brick* brick) {
+
+	//	bool ball2brick(Ball ball, Brick brick);
+	float mx = std::max(brick->position.x, std::min(ball->position.x, brick->position.x + brick->scale.x));
+	float my = std::max(brick->position.y, std::min(ball->position.y, brick->position.y + brick->scale.y));
+	float dx = ball->position.x - mx;
+	float dy = ball->position.y - my;
+	return (dx * dx + dy * dy) < (ball->scale.x / 2 * brick->scale.x / 2);
+
 }
 
 MyScene::~MyScene()
@@ -74,7 +85,15 @@ void MyScene::update(float deltaTime)
 	}
 
 	CheckCollisionPaddle();
-	CheckCollisionBricks();
+	for (size_t i = 0; i < bricks.size(); i++)
+	{
+		if (ball->OnCollisionEnterBrick(bricks[i])) {
+			ball->velocity.y = -ball->velocity.y;
+
+		}
+	}
+
+	
 
 	// ###############################################################
 	// Spacebar scales myentity
@@ -100,19 +119,14 @@ void MyScene::CheckCollisionPaddle(){
 
 	if (ball->OnCollisionEnter(paddle1)) {
 		ball->velocity.y = -ball->velocity.y;
+
 	}
 
 }
 
-void MyScene::CheckCollisionBricks() {
 
-		static bool ball2brick(const Ball& ball, const Brick& brick) {
-		float mx = std::max(rect.x, std::min(circle.x, rect.x + rect.width));
-		float my = std::max(rect.y, std::min(circle.y, rect.y + rect.height));
-		float dx = circle.x - mx;
-		float dy = circle.y - my;
-		return (dx * dx + dy * dy) < (circle.radius * circle.radius);
-	}
+
+
 
 	//for (int b = 0; b < bricks.size(); b++)
 	//{
@@ -129,4 +143,4 @@ void MyScene::CheckCollisionBricks() {
 	//	ball->velocity.y = -ball->velocity.y;
 	//}*
 
-}
+
