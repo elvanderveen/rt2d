@@ -11,6 +11,7 @@ Brick::Brick() : Entity()
 	this->addSprite("assets/brick.tga");
 	this->sprite()->color = BLUE;
 	brickColour.start();
+	this->toErase = false;
 }
 Brick::~Brick()
 {

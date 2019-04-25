@@ -30,6 +30,10 @@ public:
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
+
+	void erase();
+	void checkAmountBlocks();
+
 	 std::vector<Brick*>bricks;
 
 
@@ -37,14 +41,13 @@ private:
 	/// @brief the ball in the middle of the screen
 	Paddle* paddle1;
 	Ball* ball;
-
 	
 	
-
+	int blocksSize;
 	
 	void CheckCollisionPaddle();
 	bool CheckCollisionBricks(Ball* ball, Brick* brick);
-
+	bool ishit;
 	/// @brief a Timer to rotate the color every n seconds
 	Timer t;
 	

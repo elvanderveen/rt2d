@@ -6,22 +6,26 @@
 
 #include <fstream>
 #include <sstream>
+#include<iostream>
+#include<list> // for list operations 
 #include "myscene.h"
+using namespace std;
 
 MyScene::MyScene() : Scene()
+
 {
 	// start the timer.
 	t.start();
-	
+	ishit = false;
 	// create a single instance of MyEntity in the middle of the screen.
 	// the Sprite is added in Constructor of MyEntity.
 
 	paddle1 = new Paddle();
 	paddle1->position = Point2(SWIDTH / 2, SHEIGHT / 1.25);
-
+	
 	// Ball
 
-	ball = new Ball();                                                                                                              
+	ball = new Ball();
 	ball->position = Point2(SWIDTH / 2, SHEIGHT / 2);
 	
 
@@ -38,9 +42,9 @@ MyScene::MyScene() : Scene()
 			b->position.y = (y * 75) + yoffset;
 			this->addChild(b);
 			bricks.push_back(b);
-			
 		}
 	}
+	
 	//for each(Brick* b in bricks) {
 	//	if (ball->OnCollisionEnter(b)) {
 	//		ball->velocity.y = -ball->velocity.y;	//TestLine
@@ -64,7 +68,9 @@ bool MyScene::CheckCollisionBricks(Ball* ball, Brick* brick) {
 }
 
 MyScene::~MyScene()
+
 {
+	
 	// deconstruct and delete the Tree
 	this->removeChild(paddle1);
 	this->removeChild(ball);
@@ -72,7 +78,7 @@ MyScene::~MyScene()
 	// delete myentity from the heap (there was a 'new' in the constructor)
 	delete paddle1;
 	delete ball;
-
+	
 }
 
 void MyScene::update(float deltaTime)
@@ -83,18 +89,24 @@ void MyScene::update(float deltaTime)
 	if (input()->getKeyUp(KeyCode::Escape)) {
 		this->stop();
 	}
+	checkAmountBlocks();
+	//erase();
 
-	CheckCollisionPaddle();
 	for (size_t i = 0; i < bricks.size(); i++)
 	{
 		if (ball->OnCollisionEnterBrick(bricks[i])) {
+			
 			ball->velocity.y = -ball->velocity.y;
+			//ishit = true;
+			//this->removeChild(bricks[i]);
+			
 
+			
 		}
 	}
-
 	
-
+	CheckCollisionPaddle();
+	
 	// ###############################################################
 	// Spacebar scales myentity
 	// ###############################################################
@@ -124,10 +136,6 @@ void MyScene::CheckCollisionPaddle(){
 
 }
 
-
-
-
-
 	//for (int b = 0; b < bricks.size(); b++)
 	//{
 	//	if (ball->OnCollisionEnter(bricks[b])) {
@@ -142,5 +150,25 @@ void MyScene::CheckCollisionPaddle(){
 	//*if (ball->OnCollisionEnter(bricks)) {
 	//	ball->velocity.y = -ball->velocity.y;
 	//}*
+
+void MyScene::checkAmountBlocks() {
+	blocksSize = this->bricks.size();
+	std::cout << /*"Amount Blocks: " +*/ blocksSize << std::endl;
+}
+
+void MyScene::erase() {
+	//delete blocks
+	for (auto it = bricks.begin(); it != bricks.end();) {
+		if ((*it)->toErase >= 1) {
+			removeChild(*it);
+			delete(*it);
+			it = bricks.erase(it);
+		}
+		else {
+			++it;
+		}
+
+	}
+}
 
 

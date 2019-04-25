@@ -23,6 +23,7 @@ Ball::~Ball()
 /* if ((position.y - radius ) < 0) */
 void Ball::update(float deltaTime)
 {
+
 	if (this->position.x - (this->sprite()->size.x * scale.x / 2) < 0 || this->position.x + (this->sprite()->size.x * scale.x / 2) > SWIDTH) {
 		velocity.x = -velocity.x;
 	}

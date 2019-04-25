@@ -20,6 +20,8 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
 
+	int toErase;
+
 private:
 	Timer brickColour;
 	/* add your private declarations */
